@@ -1,5 +1,5 @@
-# Model & Controller Template for Google Apps Script
-- Using spreadsheet as a database
+# Use spreadsheet as database with Google Apps Script
+- You can use the crud operation with spreadsheet
 - Set the ID of a default spreadsheet to the Config.gs file
 
 ## Spreadsheet Sample
