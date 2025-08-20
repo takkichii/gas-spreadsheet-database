@@ -91,14 +91,14 @@ GAS は法人アカウントでも無料アカウントでも使える Google �
 ### Modelインスタンスの生成
 まず、データ操作をするために Model クラスのインスタンスを生成します。
 
-```javascript:インスタンスの生成
+```javascript
 const mdl = new Model();
 ```
 
 これで Config ファイルに設定したスプレッドシートがデフォルトとして読み込まれます。
 もし他のスプレッドシートのデータ操作を行いたい場合は、
 
-```javascript:他のスプレッドシートの読み込み
+```javascript
 const spreadsheetId2 = "10LA-e_vJuFcN13HIwuRoJPZTehto17Z9lig-c424Ig0";
 const mdl2 = new Model(spreadsheetId2);
 ```
@@ -115,7 +115,7 @@ Controller ファイルにアプリケーションのコードを記述してい
 
 データの取得には ```getData()``` メソッドを使用します。
 
-```javascript:getData
+```javascript
 getData(sheetName, conditions, offsetRow, limitRow)
 
 [arg1] sheetName  : シート名
@@ -124,7 +124,7 @@ getData(sheetName, conditions, offsetRow, limitRow)
 [arg4] limitRow   : データ取得最大数
 ```
 
-```javascript:データの全取得
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -148,7 +148,7 @@ function myFunction() {
 #### データのAND検索
 さらに、データ取得時に絞り込みをすることも可能です。
 
-```javascript:データの AND 検索取得
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -177,7 +177,7 @@ function myFunction() {
 もちろん、OR 条件でも絞り込みが可能です。
 ただし、この場合は別のメソッド ```orGetData()``` を使用します。
 
-```javascript:orGetData
+```javascript
 orGetData(sheetName, conditions, offsetRow, limitRow)
 
 [arg1] sheetName  : シート名
@@ -186,7 +186,7 @@ orGetData(sheetName, conditions, offsetRow, limitRow)
 [arg4] limitRow   : データ取得最大数
 ```
 
-```javascript:データの OR 検索取得
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -215,7 +215,7 @@ function myFunction() {
 #### offset,limitでのデータ取得
 ```getData()```, ```orGetData()``` の両方のメソッドで offset, limit を設定できます。
 
-```javascript:データの offset, limit 取得
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -242,14 +242,14 @@ function myFunction() {
 スプレッドシートの最終行に指定したデータの値を追加することができます。
 ```insertData()``` メソッドを使用します。
 
-```javascript:insertData
+```javascript
 insertData(sheetName, keyValuePairs)
 
 [arg1] sheetName     : シート名
 [arg2] keyValuePairs : 挿入するデータ (キーと値のペア)
 ```
 
-```javascript:データの新規登録
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -279,7 +279,7 @@ function myFunction() {
 
 ```updateData()``` を使用します。
 
-```javascript:updateData
+```javascript
 updateData(sheetName, keyValuePairs, conditions)
 
 [arg1] sheetName     : シート名
@@ -289,7 +289,7 @@ updateData(sheetName, keyValuePairs, conditions)
 
 ![update-sample-before.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/364477/02f42c00-add5-b2e0-68a1-b89cf789ef0e.png)
 
-```javascript:データの更新
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -318,7 +318,7 @@ function myFunction() {
 #### OR検索によるデータ更新
 ```orUpdateData()``` メソッドを用いると、絞り込み条件を OR としてデータを抽出し更新することもできます。
 
-```javascript:orUpdateData
+```javascript
 orUpdateData(sheetName, keyValuePairs, conditions)
 
 [arg1] sheetName     : シート名
@@ -329,7 +329,7 @@ orUpdateData(sheetName, keyValuePairs, conditions)
 
 ![orUpdate-data-before.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/364477/d95d5ef2-e6f6-f567-d498-9b89da10a5b5.png)
 
-```javascript:OR 検索によるデータ更新
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -359,7 +359,7 @@ function myFunction() {
 
 ```deleteData()``` メソッドを使用します。
 
-```javascript:deleteData
+```javascript
 deleteData(sheetName, conditions)
 
 [arg1] sheetName     : シート名
@@ -368,7 +368,7 @@ deleteData(sheetName, conditions)
 
 ![delete-sample-before.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/364477/cb8eebb3-097a-0031-7ac8-7bac4971feb4.png)
 
-```javascript:データの削除
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -392,7 +392,7 @@ function myFunction() {
 #### OR検索によるデータの削除
 ```orDeleteData()``` メソッドを使用します。
 
-```javascript:orDeleteData
+```javascript
 orDeleteData(sheetName, conditions)
 
 [arg1] sheetName     : シート名
@@ -401,7 +401,7 @@ orDeleteData(sheetName, conditions)
 
 ![orDelete-sample-before.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/364477/c02065bd-8b6b-7ef6-6fc7-36735e305d4c.png)
 
-```javascript:OR 検索によるデータの削除
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -426,13 +426,13 @@ function myFunction() {
 ヘッダー以外の全てのデータ行を削除します。
 ```truncateData()``` メソッドを使用します。
 
-```javascript:truncateData
+```javascript
 truncateData(sheetName)
 
 [arg1] sheetName     : シート名
 ```
 
-```javascript:データの全削除（ヘッダー以外）
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
@@ -461,7 +461,7 @@ function myFunction() {
 この比較演算子によるデータの絞り込みは、前述したデータの更新・削除においても適用できます。
 :::
 
-```javascript:比較演算子によるデータ取得
+```javascript
 function myFunction() {
     // インスタンスの生成
     const mdl = new Model();
